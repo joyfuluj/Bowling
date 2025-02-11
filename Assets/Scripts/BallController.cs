@@ -25,22 +25,22 @@ public class BallController : MonoBehaviour
         ballRB.isKinematic = true;
     }
 
+private void Update(){
+    Debug.DrawRay(transform.position, launchIndicator.forward, Color.green);
+}
+
     private void LaunchBall()
     {
-        if(isBallLaunched) return;
+        // if(isBallLaunched) return;
 
         isBallLaunched = true;
-        transform.parent = null;
         ballRB.isKinematic = false;
-        ballRB.AddForce(launchIndicator.forward * force, ForceMode.Impulse);
+        transform.parent = null;
+        Vector3 launchForce = launchIndicator.forward * force;
+        launchForce = new Vector3(0, 0, launchForce.z);
+        Debug.Log($"Applying force: {launchForce}");
+        ballRB.AddForce(launchForce, ForceMode.Impulse);
+
         launchIndicator.gameObject.SetActive(false);
-
-        Debug.Log($"Launching ball with force: {transform.forward * force}");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    
     }
 }
