@@ -34,8 +34,8 @@ private void Update(){
         // if(isBallLaunched) return;
 
         isBallLaunched = true;
-        ballRB.isKinematic = false;
         transform.parent = null;
+        ballRB.isKinematic = false;
         Vector3 launchForce = launchIndicator.forward * force;
         launchForce = new Vector3(0, 0, launchForce.z);
         Debug.Log($"Applying force: {launchForce}");
