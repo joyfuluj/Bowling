@@ -32,13 +32,13 @@ private void Update(){
 
     private void LaunchBall()
     {
-        // if(isBallLaunched) return;
+        if(isBallLaunched) return;
 
         isBallLaunched = true;
         transform.parent = null;
         ballRB.isKinematic = false;
         Vector3 launchForce = launchIndicator.forward * force;
-        launchForce = new Vector3(0, 0, launchForce.z);
+        // launchForce = new Vector3(0, 0, launchForce.z);
         Debug.Log($"Applying force: {launchForce}");
         ballRB.AddForce(launchForce, ForceMode.Impulse);
 
