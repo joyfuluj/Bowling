@@ -26,9 +26,6 @@ public class BallController : MonoBehaviour
         ResetBall();
     }
 
-private void Update(){
-    Debug.DrawRay(transform.position, launchIndicator.forward, Color.green);
-}
 
     private void LaunchBall()
     {
@@ -38,7 +35,6 @@ private void Update(){
         transform.parent = null;
         ballRB.isKinematic = false;
         Vector3 launchForce = launchIndicator.forward * force;
-        // launchForce = new Vector3(0, 0, launchForce.z);
         Debug.Log($"Applying force: {launchForce}");
         ballRB.AddForce(launchForce, ForceMode.Impulse);
 
@@ -53,5 +49,7 @@ private void Update(){
         launchIndicator.gameObject.SetActive(true);
         transform.parent = ballAnchor;
         transform.localPosition = Vector3.zero;
+    }
+    private void Update(){
     }
 }
